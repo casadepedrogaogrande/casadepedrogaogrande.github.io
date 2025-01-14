@@ -1,491 +1,512 @@
 <!DOCTYPE html>
-<html>
+<!--
+  Name: Snow - Minimal & Clean Portfolio HTML Template
+  Version: 1.0.1
+  Author: nK, unvab
+  Website: https://nkdev.info, http://unvab.com/
+  Purchase: https://nkdev.info
+  Support: https://nk.ticksy.com
+  License: You must have a valid license purchased only from ThemeForest (the above link) in order to legally use the theme for your project.
+  Copyright 2017.
+-->
+
+<html lang="en">
 
 <head>
-    <title>W3.CSS Template</title>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Casa de Pedrógão Grande | associação regionalista sediada em lisboa</title>
+
+    <meta name="description" content="Snow - Clean & Minimal Portfolio HTML template.">
+    <meta name="keywords" content="portfolio, clean, minimal, blog, template, portfolio website">
+    <meta name="author" content="nK">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
-        body,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: "Raleway", sans-serif
-        }
+    <!-- START: Styles -->
 
-        body,
-        html {
-            height: 100%;
-            line-height: 1.8;
-        }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i%7cWork+Sans:400,500,700"
+        rel="stylesheet" type="text/css">
 
-        /* Full height image header */
-        .bgimg-1 {
-            background-position: center;
-            background-size: cover;
-            background-image: url("https://scontent.flis8-2.fna.fbcdn.net/v/t31.18172-8/19055305_1581334635234030_5012470773903974670_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=c2f564&_nc_ohc=Hl_rd5aT9C8AX9HYTWy&_nc_ht=scontent.flis8-2.fna&oh=00_AfAsTg4ntCSIEA7xwcbcNnhIf95msYqxW4jey84Nk8MOBA&oe=65FB8DFA");
-            min-height: 100%;
-        }
+    <link rel="stylesheet" href="assets/css/combined.css">
 
-        .w3-bar .w3-button {
-            padding: 16px;
-        }
-
-        .w3-sidebar {
-            display: flex;
-            justify-content: right;
-        }
-    </style>
+    <!-- END: Styles -->
 
 
-    <style>
-        /* width */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
+    <!-- START: Maps -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+        <script type="text/javascript">
+            // When the window has finished loading create our google map below
+            google.maps.event.addDomListener(window, 'load', init);
 
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-        }
+            function initMap() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 15, // Zoom inicial, pode ser ajustado depois
+                    mapId: 'd3eabe14c896c127' // Sua Map ID
+                });
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-    </style>
+                // Criar uma instância do serviço de Places
+                var service = new google.maps.places.PlacesService(map);
+
+                // Definir uma busca por 'Casa de Pedrógão Grande'
+                service.findPlaceFromQuery({
+                    query: 'Casa de Pedrógão Grande',
+                    fields: ['name', 'geometry'],
+                }, function (results, status) {
+                    if (status === google.maps.places.PlacesServiceStatus.OK && results[0]) {
+                        map.setCenter(results[0].geometry.location);
+                    } else {
+                        console.error('Place not found: ' + status);
+                    }
+                });
+            }
+        </script>
+    <!-- END: Maps -->
+
+
 </head>
 
 <body>
 
-    <!-- Navbar (sit on top) -->
-    <div class="w3-top">
-        <div class="w3-bar w3-white w3-card w3-padding-16" id="myNavbar">
-            <a href="#home" class="w3-bar-item w3-button w3-wide w3-hide-small w3-hide-medium">CASA DE PEDRÓGÃO GRANDE</a>
-            <a href="#home" class="w3-bar-item w3-button w3-medium w3-hide-wide w3-hide-large">CPG</a>
-            <!-- Right-sided navbar links -->
-            <div class="w3-right w3-hide-small">
-                <a href="#about" class="w3-bar-item w3-button">SOBRE A CPG</a>
-                <a href="#events" class="w3-bar-item w3-button">EVENTOS</a>
-                <a href="#team" class="w3-bar-item w3-button">ARQ</a>
-                <a href="#socio" class="w3-bar-item w3-button">ASSOCIE-SE</a>
-                <a href="#contact" class="w3-bar-item w3-button">CONTACTOS</a>
+
+    <header class="nk-header">
+        <!--
+        START: Navbar
+    -->
+        <nav class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-transparent nk-navbar-white-text-on-top">
+            <div class="container">
+                <div class="nk-nav-table">
+                    <a href="index.html" class="nk-nav-logo">
+                        <img src="assets/images/logo-light.svg" alt="" width="0" class="nk-nav-logo-onscroll">
+                        <img src="assets/images/logo.svg" alt="" width="85">
+                    </a>
+
+                    <ul class="nk-nav nk-nav-right hidden-md-down" data-nav-mobile="#nk-nav-mobile">
+                        <!--                         <li>
+                            <a href="index.html#about">About</a>
+                        </li> -->
+                        <li>
+                            <a href="https://forms.gle/pFzpgjGFWuUTa17E6">Inscrição de Sócio</a>
+                        <li>
+                            <a href="index.html#contact">Contactos</a>
+                        </li>
+
+
+                    </ul>
+
+                    <ul class="nk-nav nk-nav-right nk-nav-icons">
+                        <li class="single-icon hidden-lg-up">
+                            <a href="#" class="nk-navbar-full-toggle">
+                                <span class="nk-icon-burger">
+                                    <span class="nk-t-1"></span>
+                                    <span class="nk-t-2"></span>
+                                    <span class="nk-t-3"></span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+        </nav>
+        <!-- END: Navbar -->
 
-            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
-                onclick="w3_open()">
-                <i class="fa fa-bars"></i>
-            </a>
-        </div>
-    </div>
-
-    <!-- Sidebar on small screens when clicking the menu icon -->
-    
-    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-right w3-hide-medium w3-hide-large"
-        style="display:none; right:0" id="mySidebar">
-        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16"> ×</a>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">A CPG</a>
-        <a href="#events" onclick="w3_close()" class="w3-bar-item w3-button">EVENTOS</a>
-        <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">ARQ</a>
-        <a href="#socio" onclick="w3_close()" class="w3-bar-item w3-button">ASSOCIE-SE</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACTOS</a>
-    </nav>
-
-    <!-- Header with full-height image -->
-    <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
-        <div class="w3-display-left w3-text-white" style="padding:48px">
-            <span class="w3-jumbo w3-hide-small"></span><br>
-            <span class="w3-xxlarge w3-hide-large w3-hide-medium">CASA DE PEDRÓGÃO GRANDE</span><br>
-            <span class="w3-large">associação regionalista em Lisboa
-                <br>casa onde se celebra a arte, cultura e gastronomia do nosso concelho
-                <br>um ponto de encontro para os pedroguenses e pessoas de toda a parte.</span>
-            <p><a href="#about"
-                    class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Learn
-                    more and start today</a></p>
-        </div>
-        <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
-            <a href="https://www.facebook.com/cpglx" target="_blank"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
-            <a href="https://www.facebook.com/cpglx" target="_blank"></a><i class="fa fa-instagram w3-hover-opacity"></i></a>
-
-        </div>
     </header>
 
-    <!-- About Section -->
-    <div class="w3-container" style="padding:128px 16px" id="about">
-        <h3 class="w3-center">SOBRE A CASA DE PEDRÓGÃO GRANDE</h3>
-        <p class="w3-center w3-medium"style="margin-top:24px">associação cultural regionalista sediada em Lisboa<br>fundada em 23 de Agosto de 1933</p>
-      
-        <p class="w3-center w3-medium "style="margin-top:34px">
-            Procuramos promover a valorização do concelho de Pedrógão Grande, do seu património cultural, gastronómico e ambiental,
-            <br>e contribuir para a preservação da identididade pedroguense promovendo o bem-estar e relações da sua diáspora e das suas gentes.
-        </p>
-        <div class="w3-row-padding w3-center" style="margin-top:64px">
 
 
+
+    <!--
+    START: Navbar Mobile
+-->
+    <nav class="nk-navbar nk-navbar-full nk-navbar-align-center" id="nk-nav-mobile">
+        <div class="nk-navbar-bg">
+            <div class="bg-image"
+                style="background-image:url(assets/images/bg-menu.jpg);background-position: 70% center;"></div>
+        </div>
+        <div class="nk-nav-table">
+            <div class="nk-nav-row">
+                <div class="container">
+                    <div class="nk-nav-header">
+
+                        <div class="nk-nav-logo">
+                            <a href="index.html" class="nk-nav-logo">
+                                <img src="assets/images/logo-light.svg" alt="" width="85">
+                            </a>
+                        </div>
+
+                        <div class="nk-nav-close nk-navbar-full-toggle">
+                            <span class="nk-icon-close"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nk-nav-row-full nk-nav-row">
+                <div class="nano">
+                    <div class="nano-content">
+                        <div class="nk-nav-table">
+                            <div class="nk-nav-row nk-nav-row-full nk-nav-row-center nk-navbar-mobile-content">
+                                <ul class="nk-nav">
+                                    <!-- Here will be inserted menu from [data-mobile-menu="#nk-nav-mobile"] -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nk-nav-row">
+                <div class="container">
+                    <div class="nk-nav-social">
+                        <ul>
+                            <li><a href="https://www.facebook.com/cpglx/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://g.co/kgs/ukXztGM"><i class="fa fa-google"></i></a></li>
+                            <li><a href="https://www.instagram.com/casadepedrogaogrande"><i
+                                        class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- END: Navbar Mobile -->
+
+
+
+
+    <div class="nk-main">
+
+        <!-- START: Header Title -->
+        <div class="nk-header-title nk-header-title-full">
+            <div class="bg-image">
+                <div style="background-image: url('assets/images/home.jpg');"></div>
+                <div class="bg-image-overlay" style="background-color: rgba(12, 12, 12, 0.6);"></div>
+            </div>
+            <div class="nk-header-table">
+                <div class="nk-header-table-cell">
+                    <div class="container">
+
+                        <img src="assets/images/logo_img.svg" alt="" width="70%">
+                        <h1></h1>
+                        <h2 class="nk-subtitle text-white">fundada em 1933</h2>
+
+
+                        <div class="nk-gap"></div>
+                        <div class="nk-header-text text-white">
+                            <div class="nk-gap-4"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <a class="nk-header-title-scroll-down text-white" href="#nk-header-title-scroll-down">
+                    <span class="pe-7s-angle-down"></span>
+                </a>
+            </div>
+
+        </div>
+
+        <div id="nk-header-title-scroll-down"></div>
+
+        <!-- END: Header Title -->
+
+
+
+
+
+        <!-- START: 90 anos -->
+        <div class="bg-white" id="about">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2 text-xs-center">
+                        <div class="nk-gap-5"></div>
+
+
+                        <h2 class="display-4">90 anos de história</h2>
+                        <p></p>
+                        <p>Fundada em em 23 de Agosto de 1933, a Casa de Pedrógão Grande é uma associação regionalista
+                            sediada em Lisboa.</p>
+
+                        <p>Procuramos promover a valorização do concelho de Pedrógão Grande,
+                            <br />do seu <strong> património cultural, gastronómico e ambiental</strong>,
+                            <br />e contribuir para a <strong>preservação da identididade pedroguense</strong>
+                            <br />promovendo o bem-estar e relações da sua <strong>diáspora</strong> e das suas
+                            <strong>gentes</strong>.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="nk-gap-5"></div>
+
+            </div>
+        </div>
+
+        <!-- END: About Our Agency -->
+
+
+        <!-- START: Events -->
+        <div class="nk-box bg-dark-1">
+            <div class="bg-image bg-image-parallax" style="background-image: url('assets/images/bg-pattern.jpg');">
+            </div>
+            <div class="nk-gap-3"></div>
+
+            <div class="container-fluid">
+                <h1 class="nk-title display-4 text-white" style="text-align: center">Eventos</h1>
+                <div class="container" style="margin-bottom: 50px;">
+
+                    <div class="nk-carousel-2 nk-carousel-x4 nk-carousel-no-margin nk-carousel-all-visible">
+                        <div class="nk-carousel-inner">
+                            <div>
+                                <div>
+                                    <div class="nk-box-1">
+                                        <img src="assets/images/eventos/almoço-17.png" alt="" class="nk-img-fit">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div>
+                                    <div class="nk-box-1">
+                                        <img src="assets/images/eventos/feira de natal-17.png" alt=""
+                                            class="nk-img-fit">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="nk-box-1">
+                                        <img src="assets/images/eventos/I fogos florestais-17.png" alt=""
+                                            class="nk-img-fit">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="nk-box-1">
+                                        <img src="assets/images/eventos/II fogos florestais-17.png" alt=""
+                                            class="nk-img-fit">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="nk-box-1">
+                                        <img src="assets/images/eventos/III fogos florestais-17.png" alt=""
+                                            class="nk-img-fit">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="nk-box-1">
+                                        <img src="assets/images/eventos/magusto-18.png" alt="" class="nk-img-fit">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="nk-box-1">
+                                        <img src="assets/images/eventos/O-GRITO.png" alt="" class="nk-img-fit">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="nk-box-1">
+                                        <img src="assets/images/eventos/santos-18.png" alt="" class="nk-img-fit">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="nk-box-1">
+                                        <img src="assets/images/eventos/venda solidária-17.png" alt=""
+                                            class="nk-img-fit">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- END: Partners -->
+
+        <div class="nk-box bg-white-1">
+
+            <div class="container" style="margin-top: -30px;">
+                <iframe
+                    src="https://www.juicer.io/api/feeds/casa-de-pedrogao-grande/iframe?per50&columns=4&truncate=200&style=slider& interval=6000"
+                    frameborder="0" width="100%" height="500"=style="display:block; margin: 0 auto;"></iframe>
+            </div>
+        </div>
+
+
+        <div class="nk-box bg-dark-1">
+
+            <div class="nk-gap-6"></div>
+
+            <div class="container">
+                <h3 class="nk-title display-4 text-white " style="text-align: center">Inscrição de Sócio</h3>
+                <div class="align-center">
+
+                    <a class="nk-btn nk-btn-rounded" href="https://forms.gle/pFzpgjGFWuUTa17E6" >Formulário de Inscrição para novos sócios</a>
+                </div>
+                            <div class="nk-gap-2"></div>
+
+            </div>
+            <div class="nk-gap-6"></div>
+
+
+        </div>
+        <!-- START: Contact Info -->
+        <div class="container" id="contact">
+            <div class="nk-gap-5"></div>
+            <div class="row vertical-gap">
+                <div class="col-lg-5">
+                    <h2 class="display-4">Contactos</h2>
+                                <div class="nk-gap-2"></div>
+
+
+                        <!-- START: Form -->
+                        <form action="#" class="nk-form nk-form-ajax">
+                            <div class="row vertical-gap">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control required" name="name" placeholder="Nome">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control required" name="email" placeholder="Email">
+                                </div>
+                            </div>
+                        
+                            <div class="nk-gap-1"></div>
+                            <textarea class="form-control required" name="message" rows="4" placeholder="Mensagem"
+                                aria-required="true"></textarea>
+                            <div class="nk-gap-1"></div>
+                            <div class="nk-form-response-success"></div>
+                            <div class="nk-form-response-error"></div>
+                            <button class="nk-btn">Enviar mensagem</button>
+                        </form>
+                        <!-- END: Form -->
+                    </div>
+                    <div class="col-lg-7">
                     
-        </div>
-    </div>
+                                        <!-- START: Info -->
+                                        <div class="nk-gap mnt-3"></div>
+                                        <ul class="nk-contact-info">
+                                            <li>
+                                                casadepedrogaogrande@gmail.com
+                                            </li>
+                                            <li>
+                                                Rua das Laranjeiras 14, Loja Esq.,<br>1600-141 Lisbon</br>
+                                            </li>
+                                            <li>
+                                                <iframe
+                                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12446.980185967599!2d-9.187960312841788!3d38.74661240000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19338d6226c5bd%3A0xcdf36037da9aed99!2sCasa%20de%20Pedr%C3%B3g%C3%A3o%20Grande!5e0!3m2!1spt-PT!2spt!4v1736840188556!5m2!1spt-PT!2spt"
+                                                    width="90%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                            </li>
+                                        </ul>
+                                        <!-- END: Info -->
+                    
 
-    <!-- Promo Section - "We know design" -->
-    <div class="w3-container w3-light-grey" style="padding:128px 16px">
-        <div class="w3-row-padding">
-            <div class="w3-col m6">
-                <h3>We know design.</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut
-                    labore et dolore.</p>
-                <p><a href="#events" class="w3-button w3-black"><i class="fa fa-th"> </i> eventos</a></p>
-            </div>
-            <div class="w3-col m6">
-                <img class="w3-image w3-round-large" src="https://www.w3schools.com/w3images/phone_buildings.jpg"
-                    alt="Buildings" width="700" height="394">
-            </div>
-        </div>
-    </div>
-
-    <!-- FOTOS Section -->
-    <div class="w3-container" style="padding:128px 160px" id="team">
-        <h3 class="w3-center">FOTOS</h3>
-        <p class="w3-center w3-large">The ones who runs this company</p>
-
-        <div class="w3-container" style="padding:48 16px">
-            <div class='sk-ww-facebook-photo-album-single' data-embed-id='25367923'></div>
-            <script src='https://widgets.sociablekit.com/facebook-photo-album-single/widget.js' async defer></script>
-
-
-
-            <img src="/w3images/team2.jpg" alt="John" style="width:100%">
-            <div class="w3-container">
-                <h3>John Doe</h3>
-                <p class="w3-opacity">CEO & Founder</p>
-                <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-                <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
-            </div>
-        </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-        <div class="w3-card">
-
-            <div class="w3-card">
-                <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
-                <div class="w3-container">
-                    <h3>Anja Doe</h3>
-                    <p class="w3-opacity">Art Director</p>
-                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-                    </p>
-                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button>
-                    </p>
                 </div>
             </div>
+            <div class="nk-gap-5"></div>
         </div>
-        <div class="w3-col l3 m6 w3-margin-bottom">
-            <div class="w3-card">
-                <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
-                <div class="w3-container">
-                    <h3>Mike Ross</h3>
-                    <p class="w3-opacity">Web Designer</p>
-                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-                    </p>
-                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button>
-                    </p>
+        <!-- END: Contact Info -->
+
+
+
+
+
+
+        <div class="nk-box bg-white">
+            <div class="nk-gap-4"></div>
+            <div class="container">
+                <h1 class="nk-title display-5" style="text-align: center">Associe-se!</h1>
+                <div class="nk-gap-2"></div>
+                <div class="align-center">
+                    <button class="nk-btn nk-btn-rounded" onclick="showDiv()">Formulário de proposta</button>
                 </div>
-            </div>
-        </div>
-        <div class="w3-col l3 m6 w3-margin-bottom">
-            <div class="w3-card">
-                <img src="/w3images/team4.jpg" alt="Dan" style="width:100%">
-                <div class="w3-container">
-                    <h3>Dan Star</h3>
-                    <p class="w3-opacity">Designer</p>
-                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-                    </p>
-                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button>
-                    </p>
+                <div class="nk-gap-2"></div>
+
+                <div id="socios" style="display:none;">
+                    <div id="ff-compose"></div>
+                    <script async defer
+                        src="https://formfacade.com/include/107581256100714819830/form/1FAIpQLSc3iv9I4omWRes18ZTdMOgTpDotJSf4HV5bP8QqaywGg8Cd5A/classic.js?div=ff-compose"></script>
                 </div>
-            </div>
-        </div>
-    </div>
-    </div>
 
-    <!-- Promo Section "Statistics" -->
-    <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
-        <div class="w3-quarter">
-            <span class="w3-xxlarge">14+</span>
-            <br>Partners
-        </div>
-        <div class="w3-quarter">
-            <span class="w3-xxlarge">55+</span>
-            <br>Projects Done
-        </div>
-        <div class="w3-quarter">
-            <span class="w3-xxlarge">89+</span>
-            <br>Happy Clients
-        </div>
-        <div class="w3-quarter">
-            <span class="w3-xxlarge">150+</span>
-            <br>Meetings
-        </div>
-    </div>
+                CASA DE PEDRÓGÃO GRANDE
+                CAIXA GERAL DE DEPÓSITOS
+                IBAN PT50 0035 0591 000 1134 6430 38
+            </div>
+            <div class="nk-gap-3"></div>
 
-    <!-- events Section -->
-    <div class="w3-container" style="padding:128px 16px" id="events">
-        <h3 class="w3-center">EVENTOS</h3>
-        <p class="w3-center w3-large">What we've done for people</p>
+                    <div id="map"></div>
 
-        <div class="w3-row-padding" style="padding:48px 160px">
-            <div class='sk-fb-event' data-embed-id='25367910'></div>
-            <script src='https://widgets.sociablekit.com/facebook-page-events/widget.js' async defer></script>
-
-            <div class="w3-col l3 m6">
-                <img src="/w3images/tech_mic.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                    alt="A microphone">
-            </div>
-            <div class="w3-col l3 m6">
-                <img src="/w3images/tech_phone.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                    alt="A phone">
-            </div>
-            <div class="w3-col l3 m6">
-                <img src="/w3images/tech_drone.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                    alt="A drone">
-            </div>
-            <div class="w3-col l3 m6">
-                <img src="/w3images/tech_sound.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                    alt="Soundbox">
-            </div>
         </div>
 
-        <div class="w3-row-padding w3-section">
-            <div class="w3-col l3 m6">
-                <img src="/w3images/tech_tablet.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                    alt="A tablet">
-            </div>
-            <div class="w3-col l3 m6">
-                <img src="/w3images/tech_camera.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                    alt="A camera">
-            </div>
-            <div class="w3-col l3 m6">
-                <img src="/w3images/tech_typewriter.jpg" style="width:100%" onclick="onClick(this)"
-                    class="w3-hover-opacity" alt="A typewriter">
-            </div>
-            <div class="w3-col l3 m6">
-                <img src="/w3images/tech_tableturner.jpg" style="width:100%" onclick="onClick(this)"
-                    class="w3-hover-opacity" alt="A tableturner">
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Modal for full size images on click-->
-    <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-        <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright"
-            title="Close Modal Image">×</span>
-        <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-            <img id="img01" class="w3-image">
-            <p id="caption" class="w3-opacity w3-large"></p>
-        </div>
-    </div>
-
-    <!-- Skills Section -->
-    <div class="w3-container w3-light-grey w3-padding-64">
-        <div class="w3-row-padding">
-            <div class="w3-col m6">
-                <h3>Our Skills.</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>
-                    tempor incididunt ut labore et dolore.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>
-                    tempor incididunt ut labore et dolore.</p>
-            </div>
-            <div class="w3-col m6">
-                <p class="w3-wide"><i class="fa fa-camera w3-margin-right"></i>Photography</p>
-                <div class="w3-grey">
-                    <div class="w3-container w3-dark-grey w3-center" style="width:90%">90%</div>
-                </div>
-                <p class="w3-wide"><i class="fa fa-desktop w3-margin-right"></i>Web Design</p>
-                <div class="w3-grey">
-                    <div class="w3-container w3-dark-grey w3-center" style="width:85%">85%</div>
-                </div>
-                <p class="w3-wide"><i class="fa fa-photo w3-margin-right"></i>Photoshop</p>
-                <div class="w3-grey">
-                    <div class="w3-container w3-dark-grey w3-center" style="width:75%">75%</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- socio Section -->
-    <!-- 
-<div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="socio">
-  <h3>PRICING</h3>
-  <p class="w3-large">Choose a pricing plan that fits your needs.</p>
-  <div class="w3-row-padding" style="margin-top:64px">
-    <div class="w3-third w3-section">
-      <ul class="w3-ul w3-white w3-hover-shadow">
-        <li class="w3-black w3-xlarge w3-padding-32">Basic</li>
-        <li class="w3-padding-16"><b>10GB</b> Storage</li>
-        <li class="w3-padding-16"><b>10</b> Emails</li>
-        <li class="w3-padding-16"><b>10</b> Domains</li>
-        <li class="w3-padding-16"><b>Endless</b> Support</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide">$ 10</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Sign Up</button>
-        </li>
-      </ul>
-    </div>
-    <div class="w3-third">
-      <ul class="w3-ul w3-white w3-hover-shadow">
-        <li class="w3-red w3-xlarge w3-padding-48">Pro</li>
-        <li class="w3-padding-16"><b>25GB</b> Storage</li>
-        <li class="w3-padding-16"><b>25</b> Emails</li>
-        <li class="w3-padding-16"><b>25</b> Domains</li>
-        <li class="w3-padding-16"><b>Endless</b> Support</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide">$ 25</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Sign Up</button>
-        </li>
-      </ul>
-    </div>
-    <div class="w3-third w3-section">
-      <ul class="w3-ul w3-white w3-hover-shadow">
-        <li class="w3-black w3-xlarge w3-padding-32">Premium</li>
-        <li class="w3-padding-16"><b>50GB</b> Storage</li>
-        <li class="w3-padding-16"><b>50</b> Emails</li>
-        <li class="w3-padding-16"><b>50</b> Domains</li>
-        <li class="w3-padding-16"><b>Endless</b> Support</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide">$ 50</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-black w3-padding-large">Sign Up</button>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
- -->
-
-    <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="socio">
-        <button id="socio-butt"> FAÇA-SE SÓCIO </button>
-        <div class="w3-center"  id="socio" style="display: none;">
-            <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSc3iv9I4omWRes18ZTdMOgTpDotJSf4HV5bP8QqaywGg8Cd5A/viewform?embedded=true"
-                width="640" height="570" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-        </div>
-
-    </div>
-
-    <!-- Contact Section -->
-    <div class="w3-light-grey" style="padding:128px 56px" id="contact">
-        <h3 class="w3-center">CONTACTOS</h3>
-        <p class="w3-center w3-large"></p>
-        <div class="w3-large" style="display:flex;justify-content:space-around">
-            <div class="w3-medium" style="display:inline-flex; justify-content:stretch;">
-                <form action="/action_page.php" target="_blank" style="display:inline-flex; flex-direction: column;">
-                    <p><input class="w3-input w3-border" style="justify-items:stretch;" type="text" placeholder="nome"
-                            required name="Name"></p>
-                    <p><input class="w3-input w3-border" style="display:inline-flex; justify-content:stretch;"
-                            type="text" placeholder="email" required name="Email"></p>
-                    <p><input class="w3-input w3-border" style="display:inline-flex; justify-content:stretch;"
-                            type="text" placeholder="mensagem" required name="Message"></p>
-                    <p>
-                        <button class="w3-button w3-black" type="submit">
-                            <i class="fa fa-paper-plane"></i> ENVIAR
-                        </button>
-                    </p>
-                </form>
-
-            </div>
-            <div class="w3-medium" style="display:inline-flex; ">
-                <div style="padding: 40px 0px;">
-                    <p><i class="fa fa-map-marker fa-fw w3-medium w3-margin-right"></i> Lisboa</p>
-                    <p><i class="fa fa-phone fa-fw w3-medium w3-margin-right"></i> 910 000 000</p>
-                    <p><i class="fa fa-envelope fa-fw w3-medium w3-margin-right"> </i> casadepedrogaogrande@gmail.com
-                    </p>
-                    <br>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- Image of location/map -->
-
-
-    </div>
-
-
-    <!-- Footer -->
-    <footer class="w3-center w3-black w3-padding-64">
-        <a href="#home" class="w3-button "><i class="fa fa-arrow-up w3-margin-right"></i></a>
-        <div class="w3-xlarge w3-section">
-            <a href="https://www.facebook.com/cpglx" target="_blank"><i
-                    class="fa fa-facebook-official w3-hover-opacity"></i></a>
-            <i class="fa fa-instagram w3-hover-opacity"></i>
-            <!--          <i class="fa fa-snapchat w3-hover-opacity"></i>
-            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-            <i class="fa fa-twitter w3-hover-opacity"></i>
-            <i class="fa fa-linkedin w3-hover-opacity"></i> -->
-        </div>
-    </footer>
-
-    <script>
-        // Modal Image Gallery
-        function onClick(element) {
-            document.getElementById("img01").src = element.src;
-            document.getElementById("modal01").style.display = "block";
-            var captionText = document.getElementById("caption");
-            captionText.innerHTML = element.alt;
-        }
-
-
-        // Toggle between showing and hiding the sidebar when clicking the menu icon
-        var mySidebar = document.getElementById("mySidebar");
-
-        function w3_open() {
-            if (mySidebar.style.display === 'block') {
-                mySidebar.style.display = 'none';
-            } else {
-                mySidebar.style.display = 'block';
+        <script>
+            function showDiv() {
+                var x = document.getElementById("socios");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
             }
-        }
-
-        // Close the sidebar with the close button
-        function w3_close() {
-            mySidebar.style.display = "none";
-        }
+        </script>
 
 
 
-        // FORM BUTTON
-        var toggleButton = document.getElementById('socio-butt');
-        var socioDiv = document.getElementById('socio');
 
-        toggleButton.addEventListener('click', function () {
-            if (socioDiv.style.display === 'none') {
-                socioDiv.style.display = 'block';
-            } else {
-                socioDiv.style.display = 'none';
-            }
-        });
 
-    </script>
+        <!--
+    START: Footer
+-->
+        <footer class="nk-footer">
+
+
+            <div class="nk-footer-cont">
+                <div class="container text-xs-center">
+                    <div class="nk-footer-social">
+                        <ul>
+                            <li><a href="https://www.facebook.com/cpglx/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://g.co/kgs/ukXztGM"><i class="fa fa-google"></i></a></li>
+                            <li><a href="https://www.instagram.com/casadepedrogaogrande"><i
+                                        class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nk-footer-text">
+                        <p>2025 &copy; CASA DE PEDRÓGÃO GRANDE</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- END: Footer -->
+
+
+    </div>
+
+
+
+
+    <!-- START: Scripts -->
+
+    <script src="assets/js/combined.js"></script>
+
+    <!-- END: Scripts -->
+
 
 </body>
 
