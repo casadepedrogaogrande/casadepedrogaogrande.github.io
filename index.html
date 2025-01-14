@@ -39,33 +39,12 @@
 
 
     <!-- START: Maps -->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-        <script type="text/javascript">
-            // When the window has finished loading create our google map below
-            google.maps.event.addDomListener(window, 'load', init);
-
-            function initMap() {
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 15, // Zoom inicial, pode ser ajustado depois
-                    mapId: 'd3eabe14c896c127' // Sua Map ID
-                });
-
-                // Criar uma instância do serviço de Places
-                var service = new google.maps.places.PlacesService(map);
-
-                // Definir uma busca por 'Casa de Pedrógão Grande'
-                service.findPlaceFromQuery({
-                    query: 'Casa de Pedrógão Grande',
-                    fields: ['name', 'geometry'],
-                }, function (results, status) {
-                    if (status === google.maps.places.PlacesServiceStatus.OK && results[0]) {
-                        map.setCenter(results[0].geometry.location);
-                    } else {
-                        console.error('Place not found: ' + status);
-                    }
-                });
-            }
-        </script>
+    <style>
+        #map {
+            height: 450px;
+            width: 100%;
+        }
+    </style>
     <!-- END: Maps -->
 
 
@@ -358,9 +337,10 @@
                 <h3 class="nk-title display-4 text-white " style="text-align: center">Inscrição de Sócio</h3>
                 <div class="align-center">
 
-                    <a class="nk-btn nk-btn-rounded" href="https://forms.gle/pFzpgjGFWuUTa17E6" >Formulário de Inscrição para novos sócios</a>
+                    <a class="nk-btn nk-btn-rounded" href="https://forms.gle/pFzpgjGFWuUTa17E6">Formulário de Inscrição
+                        para novos sócios</a>
                 </div>
-                            <div class="nk-gap-2"></div>
+                <div class="nk-gap-2"></div>
 
             </div>
             <div class="nk-gap-6"></div>
@@ -371,53 +351,65 @@
         <div class="container" id="contact">
             <div class="nk-gap-5"></div>
             <div class="row vertical-gap">
+
                 <div class="col-lg-5">
                     <h2 class="display-4">Contactos</h2>
-                                <div class="nk-gap-2"></div>
 
+                    <!-- START: Info -->
+                    <ul class="nk-contact-info">
+                        <li>
+                            <p></p><p></p><strong>Morada</strong><br>
+                            Rua das Laranjeiras 14, Loja Esq.,<br>1600-141 Lisbon</br>
+                            
+                            <a href="https://g.co/kgs/ukXztGM"
+                                target="_blank"
+                                style="display: inline-block; background-color: #626263; color: white; padding: 2px 8px; text-decoration: none; border-radius: 4px;">
+                                Direções</a><br>
 
-                        <!-- START: Form -->
-                        <form action="#" class="nk-form nk-form-ajax">
-                            <div class="row vertical-gap">
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control required" name="name" placeholder="Nome">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control required" name="email" placeholder="Email">
-                                </div>
+                        </li>
+                        <li><p></p><strong>Email</strong><br>
+
+                            casadepedrogaogrande@gmail.com<p>
+                        </li>
+                        <li><p></p><strong>NIB</strong><br>
+
+                            CAIXA GERAL DE DEPÓSITOS<br>
+                            IBAN <strong>PT50 0035 0591 000 1134 6430 38</strong></li>
+                        <div class="nk-gap-2"></div>
+
+                    </ul>
+                    <!-- END: Info -->
+
+                    <!-- START: Form -->
+                    <form action="#" class="nk-form nk-form-ajax">
+                        <div class="row vertical-gap">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control required" name="name" placeholder="Nome">
                             </div>
-                        
-                            <div class="nk-gap-1"></div>
-                            <textarea class="form-control required" name="message" rows="4" placeholder="Mensagem"
-                                aria-required="true"></textarea>
-                            <div class="nk-gap-1"></div>
-                            <div class="nk-form-response-success"></div>
-                            <div class="nk-form-response-error"></div>
-                            <button class="nk-btn">Enviar mensagem</button>
-                        </form>
-                        <!-- END: Form -->
-                    </div>
-                    <div class="col-lg-7">
-                    
-                                        <!-- START: Info -->
-                                        <div class="nk-gap mnt-3"></div>
-                                        <ul class="nk-contact-info">
-                                            <li>
-                                                casadepedrogaogrande@gmail.com
-                                            </li>
-                                            <li>
-                                                Rua das Laranjeiras 14, Loja Esq.,<br>1600-141 Lisbon</br>
-                                            </li>
-                                            <li>
-                                                <iframe
-                                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12446.980185967599!2d-9.187960312841788!3d38.74661240000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19338d6226c5bd%3A0xcdf36037da9aed99!2sCasa%20de%20Pedr%C3%B3g%C3%A3o%20Grande!5e0!3m2!1spt-PT!2spt!4v1736840188556!5m2!1spt-PT!2spt"
-                                                    width="90%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                            </li>
-                                        </ul>
-                                        <!-- END: Info -->
-                    
+                            <div class="col-md-6">
+                                <input type="email" class="form-control required" name="email" placeholder="Email">
+                            </div>
+                        </div>
 
+                        <div class="nk-gap-1"></div>
+                        <textarea class="form-control required" name="message" rows="4" placeholder="Mensagem"
+                            aria-required="true"></textarea>
+                        <div class="nk-gap-1"></div>
+                        <div class="nk-form-response-success"></div>
+                        <div class="nk-form-response-error"></div>
+                        <button class="nk-btn">Enviar mensagem</button>
+                    </form>
+                    <!-- END: Form -->
+                </div>
+                <div class="col-lg-7">
+                    <div class="nk-gap mnt-3"></div>
+
+
+
+                    <div class="col-lg-10" style="display:block; margin: 30 30 30 30;">
+                        <div id="map"></div>
+
+                    </div>
                 </div>
             </div>
             <div class="nk-gap-5"></div>
@@ -445,26 +437,70 @@
                         src="https://formfacade.com/include/107581256100714819830/form/1FAIpQLSc3iv9I4omWRes18ZTdMOgTpDotJSf4HV5bP8QqaywGg8Cd5A/classic.js?div=ff-compose"></script>
                 </div>
 
-                CASA DE PEDRÓGÃO GRANDE
-                CAIXA GERAL DE DEPÓSITOS
-                IBAN PT50 0035 0591 000 1134 6430 38
+
             </div>
             <div class="nk-gap-3"></div>
 
-                    <div id="map"></div>
+            <div id="map"></div>
 
         </div>
 
         <script>
-            function showDiv() {
-                var x = document.getElementById("socios");
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                } else {
-                    x.style.display = "none";
-                }
+            function initMap() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 16, // Zoom inicial
+                    mapId: 'd3eabe14c896c127' // Sua Map ID
+                });
+
+                var service = new google.maps.places.PlacesService(map);
+
+                service.findPlaceFromQuery({
+                    query: 'Casa de Pedrógão Grande',
+                    fields: ['name', 'geometry', 'formatted_address', 'rating', 'place_id', 'photos']
+                }, function (results, status) {
+                    if (status === google.maps.places.PlacesServiceStatus.OK && results[0]) {
+                        map.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location
+                        });
+
+                        var infowindow = new google.maps.InfoWindow({
+                            content: createContent(results[0])
+                        });
+
+                        // Abre o InfoWindow automaticamente
+                        infowindow.open(map, marker);
+
+                        marker.addListener('click', function () {
+                            infowindow.open(map, marker);
+                        });
+                    } else {
+                        console.error('Place not found: ' + status);
+                    }
+                });
+            }
+
+            function createContent(place) {
+                // Gera a miniatura do lugar, se disponível
+                var photoUrl = place.photos && place.photos.length > 0
+                    ? place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 })
+                    : '';
+
+                return `
+            <div style="text-align: left; ">
+                <img src="/snow/07 Snow-master/assets/images/logo.svg" style="width: 100vp; height: 50%; margin-top: -2px;">
+                <p><p><strong>${place.name}</strong><br>
+                R. das Laranjeiras 14, Loja Esq<br>1600-141 Lisboa, Portugal
+            <div style="text-align: right;">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.name)}&destination_place_id=${place.place_id}" target="_blank" style="display: inline-block; background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 4px;">Obter Direções</a>
+            </div>            </div>
+        `;
             }
         </script>
+
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI6nqfo3B89JEoMJz6NQyw_nxvU_qdTtc&libraries=places&callback=initMap"></script>
 
 
 
@@ -494,8 +530,6 @@
             </div>
         </footer>
         <!-- END: Footer -->
-
-
     </div>
 
 
