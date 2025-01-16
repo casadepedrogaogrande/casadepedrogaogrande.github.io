@@ -3,7 +3,7 @@ email: casadepedrogaogrande@gmail.com
 description: >- 
   Arquivo da Casa de Pedrógão Grande - associação sem fins lucrativos que tem como objetivo a promoção do desenvolvimento local e regional, através da promoção de atividades culturais, sociais, educativas e desportivas, bem como a promoção do turismo e da preservação do património cultural e natural.
 baseurl: "/arq"
-url: "http://casadepedrogaogrande.pt/index.html"
+url: "http://casadepedrogaogrande.pt"
 
 markdown: kramdown
 theme: minima
